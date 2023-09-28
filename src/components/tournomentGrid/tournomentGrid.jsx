@@ -1,9 +1,15 @@
 import React from 'react';
 import './tournomentGrid.css';
 import { useSelector } from 'react-redux';
-import { allUsers } from '../../store/selectors';
+import {
+  selectAllTournamentSteps,
+  selectAllUsers,
+  selectGameQuantity,
+} from '../../store/selectors';
 
-const TournomentGridStep = ({ usersList, steps, currentStep }) => {
+const TournomentGridStep = ({ usersList, currentStep }) => {
+  const currentGameStep = useSelector(selectGameQuantity);
+  const meshCount = useSelector(selectAllTournamentSteps);
   return (
     <div className='tournoment-grids'>
       <table className='tournoment-grid'>
@@ -12,7 +18,7 @@ const TournomentGridStep = ({ usersList, steps, currentStep }) => {
             <tbody className='tournoment-block tournoment-grid__tournoment-block'>
               <tr>
                 <td className='text tournoment-grid__text'>
-                  {user.gameQuantity >= currentStep && user.name}
+                  {currentGameStep >= currentStep && user.name}
                 </td>
               </tr>
               {index % 2 !== 0 && <br />}
@@ -20,10 +26,9 @@ const TournomentGridStep = ({ usersList, steps, currentStep }) => {
           );
         })}
       </table>
-      {currentStep + 1 <= steps && (
+      {currentStep <= meshCount && (
         <TournomentGridStep
-          usersList={filterByStep(usersList, currentStep + 1)}
-          steps={steps}
+          usersList={filterByStep(usersList, currentStep)}
           currentStep={currentStep + 1}
         />
       )}
@@ -38,15 +43,10 @@ const filterByStep = (arrayOfUsers, step) => {
 };
 
 const TournomentGrid = () => {
-  const allUsersList = useSelector(allUsers);
-
+  const allUsersList = useSelector(selectAllUsers);
   return (
     <div>
-      <TournomentGridStep
-        usersList={allUsersList}
-        steps={allUsersList[0].resultOfGames.length - 1}
-        currentStep={0}
-      />
+      <TournomentGridStep usersList={allUsersList} currentStep={0} />
     </div>
   );
 };

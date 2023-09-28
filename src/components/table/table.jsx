@@ -1,10 +1,53 @@
 import React from 'react';
 import './table.css';
 import { useSelector } from 'react-redux';
-import { allUsers } from '../../store/selectors';
+import { selectAllUsers, selectGameQuantity } from '../../store/selectors';
+
+const UserTableBlock = ({ currentUser }) => {
+  const currentGameStep = useSelector(selectGameQuantity);
+  const quantityOfGamesPlayed = (gameResults, currentGameStep) => {
+    if (currentGameStep === 0) {
+      return 0;
+    }
+    let indexOfFalse = gameResults.slice(0, currentGameStep).indexOf(false);
+    if (indexOfFalse === -1) {
+      return currentGameStep;
+    } else {
+      return indexOfFalse + 1;
+    }
+  };
+  return (
+    <tbody key={currentUser.name} className='table-line'>
+      <tr>
+        <td className='text table__text'>{currentUser.name}</td>
+        <td className='text table__text'>
+          {quantityOfGamesPlayed(currentUser.resultOfGames, currentGameStep)}
+        </td>
+        <td className='text table__text'>
+          {currentUser.resultOfGames.map((resultOfGame, index) => {
+            return (
+              currentGameStep > index &&
+              index <
+                quantityOfGamesPlayed(
+                  currentUser.resultOfGames,
+                  currentGameStep
+                ) &&
+              (resultOfGame ? (
+                <span className='text_text_green'>W </span>
+              ) : (
+                <span className='text_text_red'>L </span>
+              ))
+            );
+          })}
+        </td>
+      </tr>
+    </tbody>
+  );
+};
 
 const Table = () => {
-  const allUsersList = useSelector(allUsers);
+  const allUsersList = useSelector(selectAllUsers);
+
   return (
     <table className='table content__table'>
       <thead>
@@ -15,23 +58,7 @@ const Table = () => {
         </tr>
       </thead>
       {allUsersList.map((currentUser) => {
-        return (
-          <tbody key={currentUser.name} className='table-line'>
-            <tr>
-              <td className='text table__text'>{currentUser.name}</td>
-              <td className='text table__text'>{currentUser.gameQuantity}</td>
-              <td className='text table__text'>
-                {currentUser.resultOfGames.map((resultOfGame) => {
-                  return resultOfGame ? (
-                    <span className='text_text_green'>W </span>
-                  ) : (
-                    <span className='text_text_red'>L </span>
-                  );
-                })}
-              </td>
-            </tr>
-          </tbody>
-        );
+        return <UserTableBlock currentUser={currentUser} />;
       })}
     </table>
   );
