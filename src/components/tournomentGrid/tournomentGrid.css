@@ -1,0 +1,13 @@
+.tournoment-grid__text {
+  background: #810e0e;
+  border: 1px solid white;
+  padding: 10px;
+  width: 90px;
+  height: 40px;
+}
+
+.tournoment-grids {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}

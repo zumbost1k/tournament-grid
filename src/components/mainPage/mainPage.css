@@ -1,0 +1,16 @@
+.page {
+  background-image: url('./back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.page_content {
+  margin: 0px 110px;
+}
+
+.body {
+  display: flex;
+  gap: 70px;
+  align-items: flex-start;
+}
