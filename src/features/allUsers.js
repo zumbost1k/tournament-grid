@@ -35,7 +35,7 @@ const initialState = {
       resultOfGames: [true, true, false],
     },
   ],
-  gameQuantity: 3,
+  gameQuantity: 2,
 };
 
 export const AllUsersSlice = createSlice({
