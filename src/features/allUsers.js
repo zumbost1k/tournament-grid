@@ -19,23 +19,23 @@ const initialState = {
       resultOfGames: [true, true, true],
     },
     {
-      name: 'vania',
+      name: 'Vania',
       resultOfGames: [false, false, false],
     },
     {
-      name: 'ania',
+      name: 'Ania',
       resultOfGames: [true, false, false],
     },
     {
-      name: 'maksim',
+      name: 'Maksim',
       resultOfGames: [false, false, false],
     },
     {
-      name: 'stas',
+      name: 'Stas',
       resultOfGames: [true, true, false],
     },
   ],
-  gameQuantity: 2,
+  gameQuantity: 0,
 };
 
 export const AllUsersSlice = createSlice({

@@ -15,7 +15,7 @@ const TournomentGridStep = ({ usersList, currentStep }) => {
       <table className='tournoment-grid'>
         {usersList.map((user, index) => {
           return (
-            <tbody className='tournoment-block tournoment-grid__tournoment-block'>
+            <tbody key={index} className='tournoment-block tournoment-grid__tournoment-block'>
               <tr>
                 <td className='text tournoment-grid__text'>
                   {currentGameStep >= currentStep && user.name}

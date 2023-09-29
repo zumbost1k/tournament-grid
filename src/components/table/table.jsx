@@ -33,9 +33,13 @@ const UserTableBlock = ({ currentUser }) => {
                   currentGameStep
                 ) &&
               (resultOfGame ? (
-                <span className='text_text_green'>W </span>
+                <span key={`${index}_w`} className='text_text_green'>
+                  W{' '}
+                </span>
               ) : (
-                <span className='text_text_red'>L </span>
+                <span key={`${index}_l`} className='text_text_red'>
+                  L{' '}
+                </span>
               ))
             );
           })}

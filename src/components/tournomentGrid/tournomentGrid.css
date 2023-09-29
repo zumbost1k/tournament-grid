@@ -2,8 +2,13 @@
   background: #630b0b;
   border: 1px solid white;
   padding: 10px;
-  width: 90px;
-  height: 40px;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.tournoment-grid__text{
+  text-align: center;
 }
 
 .tournoment-grids {
