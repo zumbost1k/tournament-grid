@@ -1,0 +1,47 @@
+.form_button {
+  padding: 10px 15px;
+  margin-top: 25px;
+}
+
+.initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+}
+
+.start__button {
+  margin-top: 25px;
+  padding: 15px 20px;
+}
+
+.start__text {
+  padding-top: 20px;
+}
+
+
+.input {
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.input::placeholder {
+  padding-left: 10px;
+}
+
+.input_from {
+  padding: 10px 15px;
+  width: 400px;
+}
+
+.initial__start {
+  border: 2px solid white;
+  border-top: 6px solid rgb(128, 45, 45);
+  padding: 25px 20px;
+  border-radius: 5px;
+  background: #303030;
+}
