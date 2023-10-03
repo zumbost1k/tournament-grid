@@ -9,12 +9,13 @@ const MainPage = () => {
   return (
     <div className='page'>
       <div className='content page_content'>
-        <Header />
-        <section className='body'>
-          <Table />
-          <TournomentGrid />
-        </section>
-        <ControlPanel />
+        <div>
+          <section className='body'>
+            <Table />
+            <TournomentGrid />
+          </section>
+          <ControlPanel />
+        </div>
       </div>
     </div>
   );

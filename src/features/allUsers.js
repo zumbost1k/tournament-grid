@@ -8,7 +8,7 @@ const initialState = {
     },
     {
       name: 'Edward',
-      resultOfGames: [true, false, false],
+      resultOfGames: [false, false, false],
     },
     {
       name: 'Roma',
@@ -16,7 +16,7 @@ const initialState = {
     },
     {
       name: 'Misha',
-      resultOfGames: [true, true, true],
+      resultOfGames: [false, false, false],
     },
     {
       name: 'Vania',
@@ -24,7 +24,7 @@ const initialState = {
     },
     {
       name: 'Ania',
-      resultOfGames: [true, false, false],
+      resultOfGames: [false, false, false],
     },
     {
       name: 'Maksim',
@@ -32,7 +32,7 @@ const initialState = {
     },
     {
       name: 'Stas',
-      resultOfGames: [true, true, false],
+      resultOfGames: [false, false, false],
     },
   ],
   gameQuantity: 0,
@@ -41,7 +41,20 @@ const initialState = {
 export const AllUsersSlice = createSlice({
   name: 'allUsers',
   initialState,
-  reducers: {},
+  reducers: {
+    addWiners: (state, action) => {
+      const winersNames = action.payload;
+      state.allUsers = state.allUsers.map((currentUser) => {
+        if (winersNames.includes(currentUser.name)) {
+          currentUser.resultOfGames[state.gameQuantity] = true;
+          return currentUser;
+        } else {
+          return currentUser;
+        }
+      });
+      state.gameQuantity++
+    },
+  },
 });
-
+export const { addWiners } = AllUsersSlice.actions;
 export default AllUsersSlice.reducer;

@@ -1,14 +1,8 @@
 .page {
-  background-image: url('./back.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 100%;
   padding-bottom: 50px;
 }
 
-.page_content {
-  margin: 0px 110px;
-}
 
 .body {
   display: flex;
@@ -16,4 +10,22 @@
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+
+body {
+  background-image: url('./back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0px 110px;
+}
+
+.form_button {
+  padding: 10px 15px;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

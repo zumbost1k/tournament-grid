@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './controlPanel.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAllWinners } from '../../store/selectors';
+import { addWiners } from '../../features/allUsers';
 const ControlPanel = () => {
   const currentGameUsers = useSelector(selectAllWinners);
-  console.log(currentGameUsers);
+  const dispatch = useDispatch();
+  const [selectedValues, setSelectedValues] = useState([]);
+  const handleChange = (event) => {
+    setSelectedValues(selectedValues.concat(event.target.value));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(addWiners(selectedValues));
+    setSelectedValues([]);
+    const radioButtons = document.querySelectorAll('input[type=radio]');
+    radioButtons.forEach((radioButton) => {
+      radioButton.checked = false;
+    });
+  };
+
   return (
     <section className='panel-section'>
       {Array.isArray(currentGameUsers) ? (
-        <form  className='panel-form panel-section_panel-form'>
+        <form
+          onSubmit={handleSubmit}
+          className='form panel-section_form'
+        >
           {currentGameUsers.map((currentPair, index) => {
             return (
-              <div key={`${index}_pare`} className='buttons panel-form__buttons'>
+              <div
+                key={`${index}_pare`}
+                className='buttons form__buttons'
+              >
                 <div className='radio-pare'>
                   <p className='text radio-pare__text'>{currentPair[0].name}</p>
                   <input
@@ -20,6 +42,8 @@ const ControlPanel = () => {
                     value={currentPair[0].name}
                     id={currentPair[0].name}
                     name={`${index}_pare`}
+                    required
+                    onChange={(event) => handleChange(event, index)}
                   />
                   <label
                     className='custom-label buttons__custom-label'
@@ -29,11 +53,13 @@ const ControlPanel = () => {
                 <div className='radio-pare'>
                   <p className='text radio-pare__text'>{currentPair[1].name}</p>
                   <input
-                    value={currentPair[0].name}
+                    value={currentPair[1].name}
                     className='custom-radio buttons__custom-radio'
                     type='radio'
                     id={currentPair[1].name}
                     name={`${index}_pare`}
+                    required
+                    onChange={(event) => handleChange(event, index)}
                   />
                   <label
                     className='custom-label buttons__custom-label'
@@ -43,10 +69,19 @@ const ControlPanel = () => {
               </div>
             );
           })}
-          <button className='button panel-form__button' type='sumbit'>Следующий раунд</button>
+          <button className='button form__button' type='sumbit'>
+            Следующий раунд
+          </button>
         </form>
       ) : (
-        <div >finalist</div>
+        <div className='winner'>
+          <div className='frame winner_frame'>
+            <p className='text frame_text'>Поздравлем!</p>
+            <h2 className='title frame_title'>
+              Победил игрок {currentGameUsers.name}
+            </h2>
+          </div>
+        </div>
       )}
     </section>
   );

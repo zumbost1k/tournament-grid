@@ -4,17 +4,18 @@
     justify-content: center;
 }
 
-.panel-form {
+.form {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
 }
 
-.panel-section_panel-form {
+.panel-section_form {
     border: 2px solid white;
     border-top: 6px solid rgb(128, 45, 45);
     padding: 15px 10px;
     border-radius: 5px;
+    background: #303030;
 }
 
 .buttons {
@@ -23,7 +24,7 @@
     align-items: center;
 }
 
-.panel-form__buttons {
+.form__buttons {
     margin-top: 15px;
 }
 
@@ -91,7 +92,28 @@
     background: #474747;
 }
 
-.panel-form__button {
+.form__button {
     padding: 10px 15px;
     margin-top: 30px;
+}
+
+.frame {
+    border: 2px solid white;
+    border-top: 6px solid rgb(128, 45, 45);
+    padding: 15px 10px;
+    border-radius: 5px;
+    background: #303030;
+}
+
+.winner_frame {
+    padding: 20px 30px;
+}
+
+.frame_text {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.frame_title {
+    padding-top: 20px
 }
