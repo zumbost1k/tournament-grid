@@ -20,12 +20,3 @@ body {
   margin: 0px 110px;
 }
 
-.form_button {
-  padding: 10px 15px;
-}
-
-.start {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

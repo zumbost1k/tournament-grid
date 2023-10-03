@@ -47,3 +47,10 @@ export const selectAllWinners = createSelector(
     return currentGameUsers;
   }
 );
+
+export const selectQuantityOfUsers = createSelector(
+  [selectAllUsers],
+  (allUsers) => {
+    return allUsers.length;
+  }
+);

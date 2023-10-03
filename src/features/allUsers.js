@@ -4,35 +4,35 @@ const initialState = {
   allUsers: [
     {
       name: 'Bob',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Edward',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Roma',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Misha',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Vania',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Ania',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Maksim',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
     {
       name: 'Stas',
-      resultOfGames: [false, false, false],
+      resultOfGames: [],
     },
   ],
   gameQuantity: 0,
@@ -49,12 +49,17 @@ export const AllUsersSlice = createSlice({
           currentUser.resultOfGames[state.gameQuantity] = true;
           return currentUser;
         } else {
+          currentUser.resultOfGames[state.gameQuantity] = false;
           return currentUser;
         }
       });
-      state.gameQuantity++
+      state.gameQuantity++;
+    },
+    addUser: (state, action) => {
+      const newUser = { name: action.payload, resultOfGames: [] };
+      state.allUsers = state.allUsers.concat(newUser);
     },
   },
 });
-export const { addWiners } = AllUsersSlice.actions;
+export const { addWiners, addUser } = AllUsersSlice.actions;
 export default AllUsersSlice.reducer;

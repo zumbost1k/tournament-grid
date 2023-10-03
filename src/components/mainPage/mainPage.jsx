@@ -1,6 +1,5 @@
 import React from 'react';
 import './mainPage.css';
-import Header from '../header/header';
 import Table from '../table/table';
 import TournomentGrid from '../tournomentGrid/tournomentGrid';
 import ControlPanel from '../controlPanel/controlPanel';
