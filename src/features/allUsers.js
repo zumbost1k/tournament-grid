@@ -2,38 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   allUsers: [
-    {
-      name: 'Bob',
-      resultOfGames: [],
-    },
-    {
-      name: 'Edward',
-      resultOfGames: [],
-    },
-    {
-      name: 'Roma',
-      resultOfGames: [],
-    },
-    {
-      name: 'Misha',
-      resultOfGames: [],
-    },
-    {
-      name: 'Vania',
-      resultOfGames: [],
-    },
-    {
-      name: 'Ania',
-      resultOfGames: [],
-    },
-    {
-      name: 'Maksim',
-      resultOfGames: [],
-    },
-    {
-      name: 'Stas',
-      resultOfGames: [],
-    },
   ],
   gameQuantity: 0,
 };

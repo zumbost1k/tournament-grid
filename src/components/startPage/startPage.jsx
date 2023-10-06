@@ -8,6 +8,21 @@ import { selectQuantityOfUsers } from '../../store/selectors';
 const StartPage = () => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState('');
+  const qantityOfUsers = useSelector(selectQuantityOfUsers);
+  const isPowerOfTwo = (number) => {
+    if (number <= 0) {
+      return false;
+    }
+    while (number % 2 === 0) {
+      number /= 2;
+    }
+    return number === 1;
+  };
+  const gameStartLink = (e) => {
+    if (!isPowerOfTwo(qantityOfUsers)) {
+      e.preventDefault();
+    }
+  };
   const addNewUSer = () => {
     dispatch(addUser(userName));
     setUserName('');
@@ -36,10 +51,13 @@ const StartPage = () => {
           </button>
         </form>
         <p className='text start__text'>
-          Колличество зарегистрированных игроков:{' '}
-          {useSelector(selectQuantityOfUsers)}
+          Колличество зарегистрированных игроков: {qantityOfUsers}
         </p>
-        <Link to='/tournament' className='button start__button'>
+        <Link
+          onClick={gameStartLink}
+          to='/tournament'
+          className='button start__button'
+        >
           Начать турнир
         </Link>
       </div>
