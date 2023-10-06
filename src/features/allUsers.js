@@ -24,7 +24,9 @@ export const AllUsersSlice = createSlice({
     },
     addUser: (state, action) => {
       const newUser = { name: action.payload, resultOfGames: [] };
-      state.allUsers = state.allUsers.concat(newUser);
+      if (newUser.name.length >= 1) {
+        state.allUsers = state.allUsers.concat(newUser);
+      }
     },
   },
 });

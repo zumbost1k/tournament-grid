@@ -10,7 +10,7 @@ const StartPage = () => {
   const [userName, setUserName] = useState('');
   const qantityOfUsers = useSelector(selectQuantityOfUsers);
   const isPowerOfTwo = (number) => {
-    if (number <= 0) {
+    if (number <= 1) {
       return false;
     }
     while (number % 2 === 0) {
@@ -60,6 +60,11 @@ const StartPage = () => {
         >
           Начать турнир
         </Link>
+        {!isPowerOfTwo(qantityOfUsers) && (
+          <p className='text start__text start__text_danger'>
+            Для запуска игры необходимо большее колличество игроков
+          </p>
+        )}
       </div>
     </section>
   );
