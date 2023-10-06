@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './startPage.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser } from '../../features/allUsers';
+import { addUser, resetUsers } from '../../features/allUsers';
 import { selectQuantityOfUsers } from '../../store/selectors';
 
 const StartPage = () => {
@@ -27,6 +27,10 @@ const StartPage = () => {
     dispatch(addUser(userName));
     setUserName('');
   };
+
+  const deleteAllUSers=()=>{
+    dispatch(resetUsers());
+  }
   return (
     <section className='initial'>
       <div className='start initial__start'>
@@ -42,13 +46,15 @@ const StartPage = () => {
             }}
             required
           />
-          <button
-            onClick={addNewUSer}
-            className='button form_button'
-            type='submit'
-          >
-            Добавить пользователя
-          </button>
+          <div>
+            <button
+              onClick={addNewUSer}
+              className='button form_button'
+              type='submit'
+            >
+              Добавить пользователя
+            </button>
+          </div>
         </form>
         <p className='text start__text'>
           Колличество зарегистрированных игроков: {qantityOfUsers}
@@ -65,6 +71,9 @@ const StartPage = () => {
             Для запуска игры необходимо большее колличество игроков
           </p>
         )}
+        <button onClick={deleteAllUSers} className='button start__button_danger'>
+          Удалить пользователей
+        </button>
       </div>
     </section>
   );

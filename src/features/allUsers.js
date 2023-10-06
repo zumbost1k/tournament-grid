@@ -28,7 +28,10 @@ export const AllUsersSlice = createSlice({
         state.allUsers = state.allUsers.concat(newUser);
       }
     },
+    resetUsers: (state) => {
+      state.allUsers = [];
+    },
   },
 });
-export const { addWiners, addUser } = AllUsersSlice.actions;
+export const { addWiners, addUser, resetUsers } = AllUsersSlice.actions;
 export default AllUsersSlice.reducer;

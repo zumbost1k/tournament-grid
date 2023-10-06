@@ -24,16 +24,10 @@ const ControlPanel = () => {
   return (
     <section className='panel-section'>
       {Array.isArray(currentGameUsers) ? (
-        <form
-          onSubmit={handleSubmit}
-          className='form panel-section_form'
-        >
+        <form onSubmit={handleSubmit} className='form panel-section_form'>
           {currentGameUsers.map((currentPair, index) => {
             return (
-              <div
-                key={`${index}_pare`}
-                className='buttons form__buttons'
-              >
+              <div key={`${index}_pare`} className='buttons form__buttons'>
                 <div className='radio-pare'>
                   <p className='text radio-pare__text'>{currentPair[0].name}</p>
                   <input
