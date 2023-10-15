@@ -1,20 +1,24 @@
 .subtitle {
-  font-size: 23px;
+  font-size: 30px;
   font-weight: 400;
 }
 
 .table__subtitle {
-  padding: 25px 80px 10px 0px;
+  padding: 25px 30px 10px 0px;
 }
 
 .table {
   border-collapse: collapse;
 }
 
+.text {
+  font-size: 20px;
+}
+
 .table__text {
   background-color: #303030;
   border: 1px solid #a6a6a6;
-  padding: 10px 15px;
+  padding: 5px 10px;
 }
 
 .text_text_green {
